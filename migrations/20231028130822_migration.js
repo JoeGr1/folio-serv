@@ -3,12 +3,19 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable("skills", (table) => {
-    table.increments("id").primary();
-    table.string("skill_name").notNullable().index();
-    table.timestamp("updated_at").defaultTo(knex.fn.now());
-    table.timestamp("created_at").defaultTo(knex.fn.now());
-  });
+  return knex.schema
+    .createTable("skills", (table) => {
+      table.increments("id").primary();
+      table.string("skill_name").notNullable().index();
+      table.timestamp("updated_at").defaultTo(knex.fn.now());
+      table.timestamp("created_at").defaultTo(knex.fn.now());
+    })
+    .createTable("projects", (table) => {
+      table.increments("id").primary();
+      table.string("project_title").notNullable().index();
+      table.timestamp("updated_at").defaultTo(knex.fn.now());
+      table.timestamp("created_at").defaultTo(knex.fn.now());
+    });
 };
 
 /**

@@ -22,8 +22,11 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-const skillsRoutes = require("./routes/skills ");
+const skillsRoutes = require("./routes/skills");
 app.use("/skills", skillsRoutes);
+
+const projectsRoutes = require("./routes/projects");
+app.use("/projects", projectsRoutes);
 
 // const skillsRoutes = require("./routes/skills"); // Corrected the require statement
 // skillsRoutes(app); // Pass the 'app' object to your route module
